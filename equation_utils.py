@@ -7,6 +7,13 @@ def parse_chemical_reaction(reaction_equation):
     return reactants.split("+"), products.split("+")
 
 
+def count_atoms_in_reaction(molecules_list):
+    molecules_atoms_count = []
+    for molecule in molecules_list:
+        molecules_atoms_count.append(count_atoms_in_molecule(molecule))
+    return molecules_atoms_count
+
+
 def balance_reaction(equation):
     
     reactants, products = parse_chemical_reaction(equation)
@@ -39,13 +46,6 @@ def balance_reaction(equation):
     result = list(coeffs) + [1.0]
     
     return result
-
-
-def count_atoms_in_reaction(molecules_list):
-    molecules_atoms_count = []
-    for molecule in molecules_list:
-        molecules_atoms_count.append(count_atoms_in_molecule(molecule))
-    return molecules_atoms_count
 
 ELEMENTS = [
     'H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'F', 'Ne',
