@@ -31,13 +31,10 @@ def split_at_digit(formula):
 
 def count_atoms_in_molecule(molecular_formula):
     atom_counts = {}
-    formula = split_before_uppercases(molecular_formula)
-
-    for formula in formula:
-        element, count = split_at_digit(formula)
-        if element in atom_counts:
-            atom_counts[element] += count
+    for atom_segment in split_before_uppercases(molecular_formula):
+        atom_name, atom_count = split_at_digit(atom_segment)
+        if atom_name in atom_counts:
+            atom_counts[atom_name] += atom_count
         else:
-            atom_counts[element] = count
-
+            atom_counts[atom_name] = atom_count
     return atom_counts
